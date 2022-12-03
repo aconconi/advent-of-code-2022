@@ -3,6 +3,7 @@
     Day 00: 
 """
 
+# pylint: skip-file
 import pytest
 
 
@@ -19,11 +20,12 @@ def day00_part2(data):
     pass
 
 
+"""
 @pytest.fixture(autouse=True, name="test_data")
 def fixture_test_data():
     return parse_input("data/day00_test.txt")
 
-"""
+
 def test_day00_part1(test_data):
     assert day00_part1(test_data)
 
