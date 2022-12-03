@@ -16,12 +16,9 @@ def chunker(seq, size):
 
 
 def priority(char):
-    if char.islower():
-        # Lowercase item types a through z have priorities 1 through 26.
-        return ord(char) - ord("a") + 1
-    else:
-        # Uppercase item types A through Z have priorities 27 through 52.
-        return ord(char) - ord("A") + 27
+    # Lowercase item types a through z have priorities 1 through 26.
+    # Uppercase item types A through Z have priorities 27 through 52.
+    return ord(char) + 1 - (ord("a") if char.islower() else ord("A") - 26)
 
 
 def day03_part1(data):
