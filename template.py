@@ -1,6 +1,6 @@
 """
     Advent of Code 2022
-    Day 00: 
+    Day 00:
 """
 
 # pylint: skip-file
@@ -9,7 +9,7 @@ import pytest
 
 def parse_input(file_name):
     with open(file_name, "r", encoding="ascii") as data_file:
-        pass
+        return data_file.read()
 
 
 def day00_part1(data):

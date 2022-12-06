@@ -17,8 +17,7 @@ def parse_input(file_name):
 
 def day04_part1(data):
     return sum(
-        a1 >= a2 and b1 <= b2 or a2 >= a1 and b2 <= b1
-        for a1, b1, a2, b2 in data
+        a1 >= a2 and b1 <= b2 or a2 >= a1 and b2 <= b1 for a1, b1, a2, b2 in data
     )
 
 
