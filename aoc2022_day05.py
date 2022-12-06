@@ -27,7 +27,7 @@ def parse_input(file_name):
 def day05_part1(data):
     crates = [list(crate) for crate in data[0]]
     moves = data[1]
-    for (quantity, source, dest) in moves:
+    for quantity, source, dest in moves:
         for _ in range(quantity):
             crates[dest - 1].append(crates[source - 1].pop())
     return "".join(crate[-1] for crate in crates)
@@ -36,7 +36,7 @@ def day05_part1(data):
 def day05_part2(data):
     crates = [list(crate) for crate in data[0]]
     moves = data[1]
-    for (quantity, source, dest) in moves:
+    for quantity, source, dest in moves:
         crates[dest - 1].extend(crates[source - 1][-quantity:])
         del crates[source - 1][-quantity:]
     return "".join(crate[-1] for crate in crates)
