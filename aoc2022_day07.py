@@ -1,6 +1,6 @@
 """
     Advent of Code 2022
-    Day 07:
+    Day 07: No Space Left On Device
 """
 
 from collections import defaultdict
