@@ -21,11 +21,7 @@ def parse_input(file_name):
                     path.pop()
                 case ["$", "cd", name]:
                     path.append(name)
-                case ["$", "ls"]:
-                    continue
-                case ["dir", _]:
-                    continue
-                case [size, filename]:
+                case [size, filename] if size.isnumeric():
                     full_path = " ".join(path + [filename])
                     if full_path not in seen_files:
                         seen_files.add(full_path)
