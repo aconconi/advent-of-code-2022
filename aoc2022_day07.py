@@ -10,7 +10,6 @@ import pytest
 
 def parse_input(file_name):
     seen_files = set()
-    dir_sizes = defaultdict(int)
     path = []
     with open(file_name, "r", encoding="ascii") as data_file:
         for line in data_file:
@@ -22,12 +21,16 @@ def parse_input(file_name):
                 case ["$", "cd", name]:
                     path.append(name)
                 case [size, filename] if size.isnumeric():
-                    full_path = " ".join(path + [filename])
-                    if full_path not in seen_files:
-                        seen_files.add(full_path)
-                        for i in range(len(path)):
-                            dir_sizes[" ".join(path[: i + 1])] += int(size)
-        return dir_sizes.values()
+                    seen_files.add((*path, filename, size))
+
+    dir_sizes = defaultdict(int)
+    for *path, _, size in seen_files:
+        # Notice that we need to add each dir with its full path, because
+        # different dirs with same name but different parent dirs can exist.
+        for i in range(1, len(path) + 1):
+            dir_sizes[tuple(path[:i])] += int(size)
+
+    return dir_sizes.values()
 
 
 def day07_part1(dir_sizes):
