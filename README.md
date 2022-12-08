@@ -14,3 +14,4 @@
 |   5 | [Supply Stacks](https://adventofcode.com/2022/day/5)              | [aoc2022_day05.py](aoc2022_day05.py) |
 |   6 | [Tuning Trouble](https://adventofcode.com/2022/day/6)             | [aoc2022_day06.py](aoc2022_day06.py) |
 |   7 | [Camp Cleanup](https://adventofcode.com/2022/day/7)               | [aoc2022_day07.py](aoc2022_day07.py) |
+|   8 | [Treetop Tree House](https://adventofcode.com/2022/day/8)         | [aoc2022_day08.py](aoc2022_day08.py) |
