@@ -30,6 +30,7 @@ def move(pos, step):
 
 def update_coord(leader_coord, follower_coord):
     delta = leader_coord - follower_coord
+    # return follower_coord + (1 if delta > 1 else (-1 if delta < 1 else 0))
     match abs(delta):
         case 0:
             return follower_coord
@@ -66,9 +67,9 @@ def day09_part2(steps):
     rope = [(0, 0)] * ROPE_LENGTH
     visited = {rope[-1]}
     for step in steps:
-        prev_rope = rope.copy()
-        rope = [move(prev_rope[0], step)]
-        rope.extend(follow(rope[i - 1], prev_rope[i]) for i in range(1, ROPE_LENGTH))
+        rope[0] = move(rope[0], step)
+        for i in range(1, ROPE_LENGTH):
+            rope[i] = follow(rope[i - 1], rope[i])
         visited.add(rope[-1])
     return len(visited)
 
