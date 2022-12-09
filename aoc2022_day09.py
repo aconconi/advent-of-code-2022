@@ -62,6 +62,7 @@ def test_day09_part1():
 
 
 def test_day09_part2():
+    assert day09_part2(parse_input("data/day09_test.txt")) == 1
     assert day09_part2(parse_input("data/day09_test2.txt")) == 36
 
 
