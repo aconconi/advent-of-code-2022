@@ -4,7 +4,6 @@
 """
 
 DELTA = {"U": (0, +1), "D": (0, -1), "L": (-1, 0), "R": (+1, 0)}
-ROPE_LENGTH = 10
 
 
 def parse_input(file_name):
@@ -39,27 +38,23 @@ def follow(leader, follower):
     )
 
 
-def day09_part1(steps):
-    head = (0, 0)
-    tail = (0, 0)
-    visited = {tail}
-    for step in steps:
-        prev_head = head
-        head = move(head, step)
-        tail = prev_head if not adjacent(head, tail) else tail
-        visited.add(tail)
-    return len(visited)
-
-
-def day09_part2(steps):
-    rope = [(0, 0)] * ROPE_LENGTH
+def solve(steps, rope_length):
+    rope = [(0, 0)] * rope_length
     visited = {rope[-1]}
     for step in steps:
         rope[0] = move(rope[0], step)
-        for i in range(1, ROPE_LENGTH):
+        for i in range(1, rope_length):
             rope[i] = follow(rope[i - 1], rope[i])
         visited.add(rope[-1])
     return len(visited)
+
+
+def day09_part1(steps):
+    return solve(steps, 2)
+
+
+def day09_part2(steps):
+    return solve(steps, 10)
 
 
 def test_day09_part1():
