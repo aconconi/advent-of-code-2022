@@ -16,10 +16,6 @@ def parse_input(file_name):
         return steps
 
 
-def sign(x):
-    return 1 if x >= 0 else -1
-
-
 def adjacent(a, b):
     return abs(b[0] - a[0]) <= 1 and abs(b[1] - a[1]) <= 1
 
@@ -28,16 +24,8 @@ def move(pos, step):
     return (pos[0] + step[0], pos[1] + step[1])
 
 
-def update_coord(leader_coord, follower_coord):
-    delta = leader_coord - follower_coord
-    # return follower_coord + (1 if delta > 1 else (-1 if delta < 1 else 0))
-    match abs(delta):
-        case 0:
-            return follower_coord
-        case 1:
-            return leader_coord
-        case 2:
-            return follower_coord + sign(delta)
+def sign(n):
+    return 1 if n > 0 else -1 if n < 0 else 0
 
 
 def follow(leader, follower):
@@ -45,7 +33,7 @@ def follow(leader, follower):
         follower
         if adjacent(leader, follower)
         else tuple(
-            update_coord(leader_coord, follower_coord)
+            follower_coord + sign(leader_coord - follower_coord)
             for leader_coord, follower_coord in zip(leader, follower)
         )
     )
