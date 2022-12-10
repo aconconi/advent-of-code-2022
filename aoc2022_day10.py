@@ -5,14 +5,13 @@
 
 import pytest
 
+INTERESTING = [20, 60, 100, 140, 180, 220]
+OPERATIONS = {"noop": (1, lambda: 0), "addx": (2, lambda v: v)}
+
 
 def parse_input(file_name):
     with open(file_name, "r", encoding="ascii") as data_file:
         return data_file.read().splitlines()
-
-
-INTERESTING = [20, 60, 100, 140, 180, 220]
-OPERATIONS = {"noop": (1, lambda: 0), "addx": (2, lambda v: v)}
 
 
 def trace_execution(data):
