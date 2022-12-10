@@ -16,13 +16,13 @@ def parse_input(file_name):
 
 def trace_execution(data):
     x = 1
-    trace = []  # trace[i] is the value of register x during cycle i+1
+    signal = []  # trace[i] is the value of register x during cycle i+1
     for line in data:
         op, *params = line.split()
         cycles, func = OPERATIONS[op]
-        trace.extend([x] * cycles)  # *during* execution x is not modified
+        signal.extend([x] * cycles)  # *during* execution x is not modified
         x += func(*map(int, params))  # x is updated after all cycles are completed
-    return trace
+    return signal
 
 
 def chunker(seq, size):
@@ -37,7 +37,7 @@ def day10_part1(data):
 def day10_part2(data):
     signal = trace_execution(data)
     return "\n".join(
-        "".join("#" if i in [x - 1, x, x + 1] else "." for i, x in enumerate(crt_row))
+        "".join("#" if abs(x - i) <= 1 else "." for i, x in enumerate(crt_row))
         for crt_row in chunker(signal, 40)
     )
 
