@@ -15,7 +15,6 @@ class Monkey:
     divisor: int
     if_true: int
     if_false: int
-    count: int = 0
 
     def __init__(self, section: str):
         monkey_id, items, operation, divisor, if_true, if_false = section.splitlines()
