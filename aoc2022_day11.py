@@ -4,7 +4,7 @@
 """
 
 from math import prod
-from typing import Callable, List
+from typing import Callable, List, Optional
 
 import pytest
 
@@ -17,7 +17,7 @@ class Monkey:
     if_false: int
     count: int = 0
 
-    def __init__(self, section):
+    def __init__(self, section: str):
         monkey_id, items, operation, divisor, if_true, if_false = section.splitlines()
         op, old = operation.split()[-2:]
         match (op, old):
@@ -34,37 +34,38 @@ class Monkey:
         self.if_true = int(if_true[29:])
         self.if_false = int(if_false[29:])
 
-    def inspect(self, item: int, div, mod) -> int:
-        self.count += 1
+    def inspect(self, item: int, div: int, mod: int) -> int:
         op_result = self.operation(item) // div
         return op_result % mod if mod else op_result
 
-    def throw_to(self, item) -> int:
+    def throw_to(self, item: int) -> int:
         return self.if_true if item % self.divisor == 0 else self.if_false
 
 
-def parse_input(file_name):
+def parse_input(file_name: str) -> List[Monkey]:
     with open(file_name, "r", encoding="ascii") as data_file:
         sections = data_file.read().split("\n\n")
         return [Monkey(section) for section in sections]
 
 
-def solve(monkeys, rounds, div=3, mod=1):
+def solve(monkeys: List, rounds: int, div: Optional[int], mod: Optional[int]) -> int:
+    inspections = [0] * len(monkeys)
     for _ in range(rounds):
-        for monkey in monkeys:
+        for i, monkey in enumerate(monkeys):
             while monkey.items:
                 item = monkey.inspect(monkey.items.pop(0), div, mod)
+                inspections[i] += 1
                 other = monkey.throw_to(item)
                 monkeys[other].items.append(item)
-    inspections = sorted((monkey.count for monkey in monkeys), reverse=True)
+    inspections.sort(reverse=True)
     return inspections[0] * inspections[1]
 
 
-def day11_part1(monkeys):
+def day11_part1(monkeys: List[Monkey]) -> int:
     return solve(monkeys, rounds=20, div=3, mod=None)
 
 
-def day11_part2(monkeys):
+def day11_part2(monkeys: List[Monkey]) -> int:
     return solve(
         monkeys, rounds=10_000, div=1, mod=prod(monkey.divisor for monkey in monkeys)
     )
