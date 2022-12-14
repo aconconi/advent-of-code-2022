@@ -20,3 +20,4 @@
 |  11 | [Monkey in the Middle](https://adventofcode.com/2022/day/11)      | [aoc2022_day11.py](aoc2022_day11.py) |
 |  12 | [Hill Climbing Algorithm](https://adventofcode.com/2022/day/12)   | [aoc2022_day12.py](aoc2022_day12.py) |
 |  13 | [Distress Signal](https://adventofcode.com/2022/day/13)           | [aoc2022_day13.py](aoc2022_day13.py) |
+|  14 | [Regolith Reservoir](https://adventofcode.com/2022/day/14)        | [aoc2022_day14.py](aoc2022_day14.py) |
