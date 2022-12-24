@@ -25,5 +25,6 @@
 |  16 | [Proboscidea Volcanium](https://adventofcode.com/2022/day/16)     | [aoc2022_day16.py](aoc2022_day16.py) |
 |  17 | [Pyroclastic Flow](https://adventofcode.com/2022/day/17)          | [aoc2022_day17.py](aoc2022_day17.py) |
 |  18 | [Boiling Boulders](https://adventofcode.com/2022/day/18)          | [aoc2022_day18.py](aoc2022_day18.py) |
-|  19 | [Not Enough Minerals](https://adventofcode.com/2022/day/18)       | [aoc2022_day19.py](aoc2022_day19.py) |
-|  20 | [Grove Positioning System](https://adventofcode.com/2022/day/19)  | [aoc2022_day20.py](aoc2022_day20.py) |
+|  19 | [Not Enough Minerals](https://adventofcode.com/2022/day/19)       | [aoc2022_day19.py](aoc2022_day19.py) |
+|  20 | [Grove Positioning System](https://adventofcode.com/2022/day/20)  | [aoc2022_day20.py](aoc2022_day20.py) |
+|  21 | [Monkey Math](https://adventofcode.com/2022/day/21)               | [aoc2022_day21.py](aoc2022_day21.py) |
