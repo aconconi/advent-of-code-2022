@@ -74,8 +74,8 @@ def play_round(elves, tick):
             continue
         # Otherwise, looks in each of four directions in rotating
         # order k and proposes moving one step in the first *valid direction*
-        for k in range(tick, tick + 4):
-            direction = MOVE_DIRECTIONS[k % 4]
+        for k in range(4):
+            direction = MOVE_DIRECTIONS[(tick + k) % 4]
             if is_valid_direction(elves, elf, direction):
                 # track desired move for this Elf
                 proposed[move(elf, direction)].append(elf)
