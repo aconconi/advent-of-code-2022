@@ -1,6 +1,6 @@
 """
     Advent of Code 2022
-    Day 22:
+    Day 22: Monkey Map
 """
 
 DELTA = [(1, 0), (0, 1), (-1, 0), (0, -1)]
