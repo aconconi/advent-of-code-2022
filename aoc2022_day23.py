@@ -64,52 +64,49 @@ def how_many_empty(elves):
     return abs(max_r - min_r + 1) * abs(max_c - min_c + 1) - len(elves)
 
 
-def run(data, num_rounds=None):
-    current = set(data)
-    for tick in count():
-        if tick % 1000 == 0:
-            print(f"Round {tick}")
+def play_round(elves, tick):
+    # first half of the round
+    proposed = defaultdict(list)
+    for elf in elves:
+        # If no other Elves are in one of those eight positions,
+        # the Elf does not do anything during this round.
+        if not has_adjacent(elves, elf):
+            continue
+        # Otherwise, looks in each of four directions in rotating
+        # order k and proposes moving one step in the first *valid direction*
+        for k in range(tick, tick + 4):
+            direction = MOVE_DIRECTIONS[k % 4]
+            if is_valid_direction(elves, elf, direction):
+                # track desired move for this Elf
+                proposed[move(elf, direction)].append(elf)
+                break
 
-        # first half of the round
-        proposed = defaultdict(list)
-        for elf in current:
-            # If no other Elves are in one of those eight positions,
-            # the Elf does not do anything during this round.
-            if not has_adjacent(current, elf):
-                continue
-            # Otherwise, looks in each of four directions in rotating
-            # order k and proposes moving one step in the first *valid direction*
-            for k in range(tick, tick + 4):
-                direction = MOVE_DIRECTIONS[k % 4]
-                if is_valid_direction(current, elf, direction):
-                    # track desired move for this Elf
-                    proposed[move(elf, direction)].append(elf)
-                    break
+    # second half of the round
+    moves = 0
+    for pos in proposed:
+        if len(proposed[pos]) == 1:
+            # only 1 Elf proposed this position, therefore we update his position
+            elf = proposed[pos][0]
+            elves.add(pos)
+            elves.remove(elf)
+            moves += 1
 
-        # second half of the round
-        modified = False
-        for pos in proposed:
-            if len(proposed[pos]) == 1:
-                # only 1 Elf proposed this position, therefore we update his position
-                elf = proposed[pos][0]
-                current.add(pos)
-                current.remove(elf)
-                modified = True
-
-        if not modified or num_rounds and tick == num_rounds:
-            # print(f"no changes at {tick=}")
-            break
-    return current, tick
+    return moves
 
 
 def day23_part1(data):
-    elves, tick = run(data, 10)
+    elves = set(data)
+    for tick in range(10):
+        play_round(elves, tick)
     return how_many_empty(elves)
 
 
 def day23_part2(data):
-    elves, tick = run(data)
-    return tick + 1
+    elves = set(data)
+    for tick in count():
+        moves = play_round(elves, tick)
+        if moves == 0:
+            return tick + 1
 
 
 @pytest.fixture(autouse=True, name="test_data")
