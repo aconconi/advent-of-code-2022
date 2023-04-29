@@ -28,3 +28,4 @@
 |  19 | [Not Enough Minerals](https://adventofcode.com/2022/day/19)       | [aoc2022_day19.py](aoc2022_day19.py) |
 |  20 | [Grove Positioning System](https://adventofcode.com/2022/day/20)  | [aoc2022_day20.py](aoc2022_day20.py) |
 |  21 | [Monkey Math](https://adventofcode.com/2022/day/21)               | [aoc2022_day21.py](aoc2022_day21.py) |
+|  22 | [Monkey Map](https://adventofcode.com/2022/day/22)                | [aoc2022_day22.py](aoc2022_day22.py) |
