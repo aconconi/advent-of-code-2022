@@ -6,7 +6,6 @@
 from collections import defaultdict
 from itertools import count
 
-# pylint: skip-file
 import pytest
 
 
@@ -107,6 +106,7 @@ def day23_part2(data):
         moves = play_round(elves, tick)
         if moves == 0:
             return tick + 1
+    return None  # this can't be reached but keeps pylint happy
 
 
 @pytest.fixture(autouse=True, name="test_data")
