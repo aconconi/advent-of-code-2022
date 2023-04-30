@@ -43,7 +43,6 @@ DELTA = {
 def move(elf, direction):
     r, c = elf
     dr, dc = DELTA[direction]
-    # print(elf, direction,  (r + dr, c + dc))
     return r + dr, c + dc
 
 
