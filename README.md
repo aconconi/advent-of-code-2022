@@ -29,3 +29,6 @@
 |  20 | [Grove Positioning System](https://adventofcode.com/2022/day/20)  | [aoc2022_day20.py](aoc2022_day20.py) |
 |  21 | [Monkey Math](https://adventofcode.com/2022/day/21)               | [aoc2022_day21.py](aoc2022_day21.py) |
 |  22 | [Monkey Map](https://adventofcode.com/2022/day/22)                | [aoc2022_day22.py](aoc2022_day22.py) |
+|  23 | [Unstable Diffusion](https://adventofcode.com/2022/day/23)        | [aoc2022_day23.py](aoc2022_day23.py) |
+|  24 | [Blizzard Basin](https://adventofcode.com/2022/day/24)            | [aoc2022_day24.py](aoc2022_day24.py) |
+|  25 | [Full of Hot Air](https://adventofcode.com/2022/day/25)           | [aoc2022_day25.py](aoc2022_day25.py) |
