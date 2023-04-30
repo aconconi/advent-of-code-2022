@@ -29,9 +29,6 @@ def dec_to_snafu(n: int) -> str:
 
 
 def day25_part1(data):
-    assert dec_to_snafu(12345) == "1-0---0"
-    assert dec_to_snafu(314159265) == "1121-1110-1=0"
-
     return dec_to_snafu(sum(snafu_to_dec(s) for s in data))
 
 
@@ -66,13 +63,11 @@ def test_day25_part1(test_data):
 
 
 def test_day25_dec_to_snafu(test_pairs):
-    for dec, snafu in test_pairs:
-        assert dec_to_snafu(dec) == snafu
+    assert all(dec_to_snafu(dec) == snafu for dec, snafu in test_pairs)
 
 
 def test_day25_snafu_to_dec(test_pairs):
-    for dec, snafu in test_pairs:
-        assert snafu_to_dec(snafu) == dec
+    assert all(snafu_to_dec(snafu) == dec for dec, snafu in test_pairs)
 
 
 if __name__ == "__main__":
