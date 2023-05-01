@@ -25,7 +25,7 @@ def dec_to_snafu(n: int) -> str:
         d += carry
         carry = 1 if d >= 3 else 0
         ans.append(DEC_TO_SNAFU[d])
-    return (dec_to_snafu(carry) if carry else "") + "".join(reversed(ans))
+    return ("1" if carry else "") + "".join(reversed(ans))
 
 
 def day25_part1(data):
